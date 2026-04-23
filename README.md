@@ -4,12 +4,34 @@
 
 ---
 
+## 📸 Project Preview
+
+### 🔌 Circuit Diagram
+
+<p align="center">
+  <img src="docs/circuit.jpg" width="600"/>
+</p>
+
+### 🖥️ Web Dashboard Output
+
+<p align="center">
+  <img src="docs/display.jpeg" width="600"/>
+</p>
+
+### 🛠️ Hardware Prototype
+
+<p align="center">
+  <img src="docs/product.jpeg" width="600"/>
+</p>
+
+---
+
 ## 📌 Overview
 
 **OsciMobile** is a smart IoT-based oscilloscope that measures:
 
 * ⚡ AC Voltage (ZMPT101B)
-* 🔋 DC Voltage (Op-Amp Divider)
+* 🔋 DC Voltage (Op-Amp Divider using LMH6644)
 * 🔌 Current (ACS712)
 
 It processes signals using the ESP32 and streams real-time data wirelessly to a **web dashboard**, eliminating the need for expensive oscilloscopes.
@@ -18,47 +40,38 @@ It processes signals using the ESP32 and streams real-time data wirelessly to a 
 
 ## 🧠 Key Features
 
-* 📡 **Wireless Data Transmission** (UDP + WebSocket)
-* 📊 **Real-Time Waveform Visualization**
-* 📈 **Live Metrics Display**:
+* 📡 Wireless Data Transmission (UDP + WebSocket)
+* 📊 Real-Time Waveform Visualization
+* 📈 Live Metrics:
 
   * Voltage (DC)
   * Current
   * Power
   * RMS Voltage
-* 🎯 **Adjustable Trigger Level**
-* 🔍 **Zoom & Auto Scaling**
-* ⏸️ **Freeze / Record Mode**
-* 📁 **CSV Export for Data Analysis**
-* 📉 **Statistics Tracking** (Min, Max, Peak)
-* ⚠️ **Fault Detection System**
-* 🌐 **Works on Any Browser (No App Required)**
+* 🎯 Adjustable Trigger Level
+* 🔍 Zoom & Auto Scaling
+* ⏸️ Freeze / Record Mode
+* 📁 CSV Export Support
+* 📉 Statistics Tracking (Min, Max, Peak)
+* ⚠️ Fault Detection System
+* 🌐 Works on Any Browser (No App Required)
 
 ---
 
 ## 🏗️ System Architecture
 
-* **ESP32 (Dual Core)**
+```text
+Sensors → ESP32 ADC → Processing → WiFi → Node.js Server → Web Dashboard
+```
 
-  * Core 1 → Signal Acquisition + Display
-  * Core 0 → WiFi + Data Transmission
+* **ESP32 (Dual Core FreeRTOS)**
 
-* **Sensors Used**:
-
-  * ZMPT101B → AC Voltage
-  * ACS712 → Current
-  * LMH6644 Circuit → DC Voltage
-
-* **Display**:
-
-  * TFT (ILI9341)
-  * Web Dashboard (Chart.js based UI)
+  * Core 1 → Data Acquisition + TFT Display
+  * Core 0 → WiFi Communication
 
 ---
 
-## 🔌 Hardware Setup
-
-### Components
+## 🔌 Hardware Components
 
 * ESP32 DevKit V1
 * ZMPT101B AC Voltage Sensor
@@ -88,62 +101,38 @@ It processes signals using the ESP32 and streams real-time data wirelessly to a 
 
 ## 🌐 Web Dashboard
 
-The dashboard provides:
-
 * Dual waveform (Voltage + Current)
-* RMS calculation
-* Power calculation
+* Real-time plotting using Chart.js
 * Trigger line adjustment
-* Event logging
-* Live/Demo mode auto switching
-
-👉 Built using **HTML + Chart.js + WebSocket** 
-
----
-
-## 🔄 Data Flow
-
-```
-Sensors → ESP32 ADC → Processing → WiFi → Node.js Server → Web Dashboard
-```
+* Event logging & fault alerts
+* Auto LIVE / DEMO mode switching
 
 ---
 
 ## 📡 Communication
 
 * ESP32 → Server → **UDP (Port 8888)**
-* Server → Browser → **WebSocket (Port 8080)** 
-
----
-
-## 📊 Sample Output
-
-* Voltage (DC)
-* Current (A)
-* Power (W)
-* RMS Voltage
-
-Displayed in real-time with waveform graphs.
+* Server → Browser → **WebSocket (Port 8080)**
 
 ---
 
 ## 🚀 How to Run
 
-### 1. Upload ESP32 Code
+### 1️⃣ Upload ESP32 Code
 
 * Open Arduino IDE
 * Select ESP32 board
-* Upload `.ino` file
+* Upload firmware (`oscimobile.ino`)
 
-### 2. Run Server
+### 2️⃣ Run Server
 
 ```bash
 node server.js
 ```
 
-### 3. Open Dashboard
+### 3️⃣ Open Dashboard
 
-* Open `index.html` in browser
+* Open HTML file in browser
 
 ---
 
@@ -160,15 +149,15 @@ node server.js
 
 * Multi-channel oscilloscope
 * Mobile app integration
-* Cloud data logging
+* Cloud storage
 * Higher sampling rate
-* PCB design upgrade
+* Custom PCB design
 
 ---
 
 ## 💰 Cost
 
-Approximate BOM Cost: **₹2000 – ₹5000**
+Approximate cost: **₹2000 – ₹5000**
 
 ---
 
@@ -188,6 +177,4 @@ Developed as part of **Product Development Lab Project (EE3670)**
 
 ## 📜 License
 
-Open-source for educational use 🚀
-
----
+Open-source for educational purposes 🚀

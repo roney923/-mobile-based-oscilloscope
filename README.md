@@ -9,19 +9,19 @@
 ### 🔌 Circuit Diagram
 
 <p align="center">
-  <img src="docs/circuit.jpg" width="600"/>
+  <img src="https://github.com/roney923/-mobile-based-oscilloscope/blob/main/docs/circuit.jpg" width="650"/>
 </p>
 
 ### 🖥️ Web Dashboard Output
 
 <p align="center">
-  <img src="docs/display.jpeg" width="600"/>
+  <img src="https://github.com/roney923/-mobile-based-oscilloscope/blob/main/docs/display.jpeg" width="650"/>
 </p>
 
 ### 🛠️ Hardware Prototype
 
 <p align="center">
-  <img src="docs/product.jpeg" width="600"/>
+  <img src="https://github.com/roney923/-mobile-based-oscilloscope/blob/main/docs/product.jpeg" width="650"/>
 </p>
 
 ---
@@ -31,7 +31,7 @@
 **OsciMobile** is a smart IoT-based oscilloscope that measures:
 
 * ⚡ AC Voltage (ZMPT101B)
-* 🔋 DC Voltage (Op-Amp Divider using LMH6644)
+* 🔋 DC Voltage (LMH6644-based divider)
 * 🔌 Current (ACS712)
 
 It processes signals using the ESP32 and streams real-time data wirelessly to a **web dashboard**, eliminating the need for expensive oscilloscopes.
@@ -45,8 +45,8 @@ It processes signals using the ESP32 and streams real-time data wirelessly to a 
 * 📈 Live Metrics:
 
   * Voltage (DC)
-  * Current
-  * Power
+  * Current (A)
+  * Power (W)
   * RMS Voltage
 * 🎯 Adjustable Trigger Level
 * 🔍 Zoom & Auto Scaling
@@ -132,7 +132,7 @@ node server.js
 
 ### 3️⃣ Open Dashboard
 
-* Open HTML file in browser
+* Open `oscilloscope_dashboard.html` in browser
 
 ---
 
@@ -149,7 +149,7 @@ node server.js
 
 * Multi-channel oscilloscope
 * Mobile app integration
-* Cloud storage
+* Cloud data logging
 * Higher sampling rate
 * Custom PCB design
 
@@ -164,17 +164,16 @@ Approximate cost: **₹2000 – ₹5000**
 ## 👨‍💻 Author
 
 **Rohit Kumar Sahu**
-NIT Rourkela
-Electrical Engineering
+NIT Rourkela – Electrical Engineering
 
 ---
 
 ## ⭐ Acknowledgment
 
-Developed as part of **Product Development Lab Project (EE3670)**
+Developed as part of **Product Development Lab (EE3670)**
 
 ---
 
 ## 📜 License
 
-Open-source for educational purposes 🚀
+Open-source for educational use 🚀

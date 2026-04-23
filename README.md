@@ -7,23 +7,19 @@
 ## 📸 Project Preview
 
 ### 🔌 Circuit Diagram
-
 <p align="center">
-  <img src="https://github.com/roney923/-mobile-based-oscilloscope/blob/main/docs/circuit.jpg" width="650"/>
+  <img src="https://raw.githubusercontent.com/roney923/-mobile-based-oscilloscope/main/oscilloscope/docs/circuit.jpg" width="650"/>
 </p>
 
 ### 🖥️ Web Dashboard Output
-
 <p align="center">
-  <img src="https://github.com/roney923/-mobile-based-oscilloscope/blob/main/docs/display.jpeg" width="650"/>
+  <img src="https://raw.githubusercontent.com/roney923/-mobile-based-oscilloscope/main/oscilloscope/docs/display.jpeg" width="650"/>
 </p>
 
 ### 🛠️ Hardware Prototype
-
 <p align="center">
-  <img src="https://github.com/roney923/-mobile-based-oscilloscope/blob/main/docs/product.jpeg" width="650"/>
+  <img src="https://raw.githubusercontent.com/roney923/-mobile-based-oscilloscope/main/oscilloscope/docs/product.jpeg" width="650"/>
 </p>
-
 ---
 
 ## 📌 Overview

@@ -20,6 +20,7 @@
 <p align="center">
   <img src="https://raw.githubusercontent.com/roney923/-mobile-based-oscilloscope/main/oscilloscope/docs/product.jpeg" width="650"/>
 </p>
+
 ---
 
 ## 📌 Overview
@@ -39,7 +40,6 @@ It processes signals using the ESP32 and streams real-time data wirelessly to a 
 * 📡 Wireless Data Transmission (UDP + WebSocket)
 * 📊 Real-Time Waveform Visualization
 * 📈 Live Metrics:
-
   * Voltage (DC)
   * Current (A)
   * Power (W)
@@ -60,10 +60,10 @@ It processes signals using the ESP32 and streams real-time data wirelessly to a 
 Sensors → ESP32 ADC → Processing → WiFi → Node.js Server → Web Dashboard
 ```
 
-* **ESP32 (Dual Core FreeRTOS)**
+**ESP32 (Dual Core FreeRTOS)**
 
-  * Core 1 → Data Acquisition + TFT Display
-  * Core 0 → WiFi Communication
+* Core 1 → Data Acquisition + TFT Display
+* Core 0 → WiFi Communication
 
 ---
 
@@ -81,17 +81,17 @@ Sensors → ESP32 ADC → Processing → WiFi → Node.js Server → Web Dashboa
 
 ## ⚙️ Pin Configuration
 
-| Function   | GPIO |
-| ---------- | ---- |
-| AC Voltage | 34   |
-| Current    | 33   |
-| DC Voltage | 32   |
-| TFT MOSI   | 13   |
-| TFT MISO   | 12   |
-| TFT SCLK   | 14   |
-| TFT CS     | 15   |
-| TFT DC     | 4    |
-| TFT RST    | 2    |
+| Function | GPIO |
+|----------|------|
+| AC Voltage | 34 |
+| Current | 33 |
+| DC Voltage | 32 |
+| TFT MOSI | 13 |
+| TFT MISO | 12 |
+| TFT SCLK | 14 |
+| TFT CS | 15 |
+| TFT DC | 4 |
+| TFT RST | 2 |
 
 ---
 
@@ -112,23 +112,143 @@ Sensors → ESP32 ADC → Processing → WiFi → Node.js Server → Web Dashboa
 
 ---
 
-## 🚀 How to Run
+# 🚀 How to Run
 
-### 1️⃣ Upload ESP32 Code
+## 📦 Prerequisites
 
-* Open Arduino IDE
-* Select ESP32 board
-* Upload firmware (`oscimobile.ino`)
+Install the following software:
 
-### 2️⃣ Run Server
+- Node.js (v18 or later)
+- Python 3.x
+- Arduino IDE
+- ESP32 Board Package for Arduino IDE
+
+Verify installation:
 
 ```bash
+node -v
+npm -v
+python --version
+```
+
+---
+
+## 📁 Project Structure
+
+```
+oscilloscope/
+│
+├── dashboard/
+│   └── oscilloscope_dashboard.html
+│
+├── server/
+│   ├── server.js
+│   ├── package.json
+│   └── node_modules/
+│
+├── firmware/
+│   └── oscimobile.ino
+│
+└── docs/
+```
+
+---
+
+## 📦 Install Dependencies (One Time)
+
+Open a terminal inside the **server** folder.
+
+```bash
+cd server
+npm install
+```
+
+---
+
+## 🖥️ Demo Mode (Without ESP32)
+
+1. Open `server/server.js`.
+2. Enable Demo Mode:
+
+```javascript
+const DEMO_MODE = true;
+```
+
+(or set `MODE = "DEMO"` depending on your code.)
+
+3. Start the Node.js server:
+
+```bash
+cd server
 node server.js
 ```
 
-### 3️⃣ Open Dashboard
+4. Open another terminal and launch the dashboard:
 
-* Open `oscilloscope_dashboard.html` in browser
+```bash
+cd dashboard
+python -m http.server 8000
+```
+
+5. Open your browser and visit:
+
+```
+http://localhost:8000/oscilloscope_dashboard.html
+```
+
+The dashboard will display simulated real-time voltage and current waveforms.
+
+---
+
+## 📡 Live Mode (With ESP32)
+
+1. Open `firmware/oscimobile.ino` using Arduino IDE.
+2. Update the Wi-Fi credentials:
+
+```cpp
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_WIFI_PASSWORD";
+```
+
+3. Find your computer's IP address:
+
+```bash
+ipconfig
+```
+
+Update the server IP inside the firmware:
+
+```cpp
+IPAddress serverIP(192,168,1,100);
+```
+
+Replace it with your computer's IPv4 address.
+
+4. Select **ESP32 Dev Module**, choose the correct COM port, and upload the firmware.
+
+5. Start the Node.js server:
+
+```bash
+cd server
+node server.js
+```
+
+6. Launch the dashboard:
+
+```bash
+cd dashboard
+python -m http.server 8000
+```
+
+7. Open:
+
+```
+http://localhost:8000/oscilloscope_dashboard.html
+```
+
+The dashboard will now display live measurements received from the ESP32.
+
+> **Note:** The ESP32 and the computer must be connected to the same Wi-Fi network.
 
 ---
 
@@ -159,7 +279,7 @@ Approximate cost: **₹2000 – ₹5000**
 
 ## 👨‍💻 Author
 
-**Rohit Kumar Sahu**
+**Rohit Kumar Sahu**  
 NIT Rourkela – Electrical Engineering
 
 ---
